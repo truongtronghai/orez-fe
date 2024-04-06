@@ -1,23 +1,8 @@
 import path from 'path'
 
 export default defineNuxtConfig({
-	modules: ['nuxt-primevue', '@pinia/nuxt'],
-	postcss: {
-		plugins: {
-			tailwindcss: {},
-			autoprefixer: {},
-		},
-	},
-	css: ['~/assets/css/main.css', 'primeicons/primeicons.css'],
-	primevue: {
-		options: {
-			unstyled: true,
-		},
-		importPT: { from: path.resolve(__dirname, './assets/presets/lara/') },
-		components: {
-			exclude: ['Editor', 'Chart'],
-		},
-	},
+	modules: ['@pinia/nuxt'],
+	css: ['~/assets/css/main.css'],
 	pinia: {
 		storesDirs: ['./stores/**'],
 	},
