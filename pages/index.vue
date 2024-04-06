@@ -1,34 +1,41 @@
 <template>
-	<div class="surface-card p-4 shadow-2 border-round w-full">
-		<div class="text-center mb-5">
+	<div class="surface-card p-4 shadow-2 border-round w-full md:w-[40%]">
+		<div class="flex flex-col items-center text-center mb-5">
 			<img src="/public/images/logo.svg" alt="Image" height="50" class="mb-3" />
 			<div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-			<span class="text-600 font-medium line-height-3"
-				>Don't have an account?</span
-			>
-			<a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
-				>Create today!</a
-			>
 		</div>
 
 		<div>
-			<label for="email1" class="block text-900 font-medium mb-2">Email</label>
-			<InputText id="email1" type="text" class="w-full mb-3" />
+			<label for="username" class="block text-900 font-medium mb-2"
+				>User name</label
+			>
+			<InputText
+				id="username"
+				type="text"
+				class="w-full mb-3"
+				v-model="username"
+			/>
 
-			<label for="password1" class="block text-900 font-medium mb-2"
+			<label for="password" class="block text-900 font-medium mb-2"
 				>Password</label
 			>
-			<InputText id="password1" type="password" class="w-full mb-3" />
+			<Password
+				id="password"
+				type="password"
+				class="w-full mb-3"
+				v-model="password"
+				:feedback="false"
+			/>
 
 			<div class="flex align-items-center justify-content-between mb-6">
 				<div class="flex align-items-center">
 					<Checkbox
-						id="rememberme1"
+						id="rememberme"
 						:binary="true"
 						v-model="checked"
 						class="mr-2"
 					></Checkbox>
-					<label for="rememberme1">Remember me</label>
+					<label for="rememberme">Remember me</label>
 				</div>
 				<a
 					class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
@@ -36,11 +43,23 @@
 				>
 			</div>
 
-			<Button label="Sign In" icon="pi pi-user" class="w-full"></Button>
+			<Button
+				label="Sign In"
+				icon="pi pi-user"
+				class="w-full"
+				:disabled="!(!!username.length && !!password.length)"
+				@click="handleSignIn"
+			></Button>
 		</div>
 	</div>
 </template>
 <script setup lang="ts">
 const checked = ref(false)
+const username = ref('')
+const password = ref('')
+
+const handleSignIn = () => {
+	alert(username.value + ' - ' + password.value)
+}
 </script>
 <style scoped></style>
