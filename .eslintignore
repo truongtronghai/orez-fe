@@ -1,5 +1,0 @@
-*.test.js
-node_modules/
-dist/
-assets/presets/
-tailwind.config.js
